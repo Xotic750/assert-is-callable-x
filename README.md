@@ -24,7 +24,7 @@ alt="npm version" height="18">
 
 If IsCallable(callbackfn) is false, throw a TypeError exception.
 
-**Version**: 1.0.0  
+**Version**: 1.0.1  
 **Author:** Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
@@ -38,6 +38,11 @@ not. Otherwise returns the `callback`.
 **Throws**:
 
 - <code>TypeError</code> Throws if `callback` is not a callable.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| callback | <code>\*</code> | The argument to be tested. |
 
 **Example**  
 ```js
