@@ -4,14 +4,16 @@
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
   es3:true, esnext:true, plusplus:true, maxparams:3, maxdepth:1,
-  maxstatements:11, maxcomplexity:2 */
+  maxstatements:11, maxcomplexity:3 */
 
-/*global expect, module, jasmine, require, describe, it, returnExports */
+/*global expect, module, jasmine, require, describe, xit, it, returnExports */
 
 (function () {
   'use strict';
 
-  var assertIsCallable;
+  var hasSymbolCtr = typeof Symbol === 'function',
+    ifSymbolCtrIt = hasSymbolCtr ? it : xit,
+    assertIsCallable;
   if (typeof module === 'object' && module.exports) {
     require('es5-shim');
     assertIsCallable = require('../../index.js');
@@ -54,7 +56,26 @@
         expected = values.map(function () {
           return true;
         }),
-               actual = values.map(block);
+        actual = values.map(block);
+      expect(actual).toEqual(expected);
+    });
+
+    ifSymbolCtrIt('Symbols should throw a TypeError', function () {
+      function block(value) {
+        try {
+          assertIsCallable(value);
+          return false;
+        } catch (e) {
+          expect(e).toEqual(jasmine.any(TypeError));
+          expect(e.message).toBe('#<Symbol> is not a function');
+        }
+        return true;
+      }
+      var values = [Symbol('mySymbol')],
+        expected = values.map(function () {
+          return true;
+        }),
+        actual = values.map(block);
       expect(actual).toEqual(expected);
     });
 

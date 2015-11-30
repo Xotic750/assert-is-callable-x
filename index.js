@@ -23,7 +23,7 @@
  * </a>
  *
  * If IsCallable(callbackfn) is false, throw a TypeError exception.
- * @version 1.0.3
+ * @version 1.0.4
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -44,6 +44,7 @@
   'use strict';
 
   var ES = require('es-abstract/es6'),
+    safeToString = require('safe-to-string-x'),
     isPrimitive = require('is-primitive');
   /**
    * Tests `callback` to see if it is callable, throws a `TypeError` if it is
@@ -55,17 +56,19 @@
    * @example
    * var assertIsCallable = require('assert-is-callable-x');
    * var primitive = true;
+   * var mySymbol = Symbol('mySymbol');
    * var object = {};
    * function fn () {}
    *
    * assertIsCallable(primitive); // TypeError 'true is not a function'.
    * assertIsCallable(object); // TypeError '#<Object> is not a function'.
+   * assertIsCallable(mySymbol); // TypeError '#<Symbol> is not a function'.
    * assertIsCallable(fn); // Returns fn.
    */
   module.exports =  function assertIsCallable(callback) {
     if (!ES.IsCallable(callback)) {
       throw new TypeError(
-        (isPrimitive(callback) ? ES.ToString(callback) : '#<Object>') +
+        (isPrimitive(callback) ? safeToString(callback) : '#<Object>') +
         ' is not a function'
       );
     }
