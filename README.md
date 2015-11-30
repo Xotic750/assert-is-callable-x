@@ -24,7 +24,7 @@ alt="npm version" height="18">
 
 If IsCallable(callbackfn) is false, throw a TypeError exception.
 
-**Version**: 1.0.3  
+**Version**: 1.0.4  
 **Author:** Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
@@ -48,10 +48,12 @@ not. Otherwise returns the `callback`.
 ```js
 var assertIsCallable = require('assert-is-callable-x');
 var primitive = true;
+var mySymbol = Symbol('mySymbol');
 var object = {};
 function fn () {}
 
 assertIsCallable(primitive); // TypeError 'true is not a function'.
 assertIsCallable(object); // TypeError '#<Object> is not a function'.
+assertIsCallable(mySymbol); // TypeError '#<Symbol> is not a function'.
 assertIsCallable(fn); // Returns fn.
 ```
