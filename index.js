@@ -23,7 +23,7 @@
  * </a>
  *
  * If IsCallable(callbackfn) is false, throw a TypeError exception.
- * @version 1.0.1
+ * @version 1.0.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -43,7 +43,7 @@
 ;(function () {
   'use strict';
 
-  var isCallable = require('is-callable'),
+  var ES = require('es-abstract'),
     isPrimitive = require('is-primitive');
   /**
    * Tests `callback` to see if it is callable, throws a `TypeError` if it is
@@ -62,10 +62,10 @@
    * assertIsCallable(object); // TypeError '#<Object> is not a function'.
    * assertIsCallable(fn); // Returns fn.
    */
-  module.exports =  function (callback) {
-    if (!isCallable(callback)) {
+  module.exports =  function assertIsCallable(callback) {
+    if (!ES.IsCallable(callback)) {
       throw new TypeError(
-        (isPrimitive(callback) ? String(callback) : '#<Object>') +
+        (isPrimitive(callback) ? ES.ToString(callback) : '#<Object>') +
         ' is not a function'
       );
     }
