@@ -57,13 +57,20 @@
    * var assertIsCallable = require('assert-is-callable-x');
    * var primitive = true;
    * var mySymbol = Symbol('mySymbol');
+   * var symObj = Object(mySymbol);
    * var object = {};
    * function fn () {}
    *
-   * assertIsCallable(primitive); // TypeError 'true is not a function'.
-   * assertIsCallable(object); // TypeError '#<Object> is not a function'.
-   * assertIsCallable(mySymbol); // TypeError '#<Symbol> is not a function'.
-   * assertIsCallable(fn); // Returns fn.
+   * assertIsCallable(primitive);
+   *    // TypeError 'true is not a function'.
+   * assertIsCallable(object);
+   *    // TypeError '#<Object> is not a function'.
+   * assertIsCallable(mySymbol);
+   *    // TypeError 'Symbol(mySymbol) is not a function'.
+   * assertIsCallable(symObj);
+   *    // TypeError '#<Object> is not a function'.
+   * assertIsCallable(fn);
+   *    // Returns fn.
    */
   module.exports =  function assertIsCallable(callback) {
     if (!ES.IsCallable(callback)) {

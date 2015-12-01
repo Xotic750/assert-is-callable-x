@@ -11,8 +11,9 @@
 (function () {
   'use strict';
 
-  var hasSymbolCtr = typeof Symbol === 'function',
-    ifSymbolCtrIt = hasSymbolCtr ? it : xit,
+  var hasSymbolSupport = typeof Symbol === 'function' &&
+      typeof Symbol() === 'symbol',
+    ifSymbolSupportIt = hasSymbolSupport ? it : xit,
     assertIsCallable;
   if (typeof module === 'object' && module.exports) {
     require('es5-shim');
@@ -60,18 +61,37 @@
       expect(actual).toEqual(expected);
     });
 
-    ifSymbolCtrIt('Symbols should throw a TypeError', function () {
+    ifSymbolSupportIt('Symbol literals should throw a TypeError', function () {
       function block(value) {
         try {
           assertIsCallable(value);
           return false;
         } catch (e) {
           expect(e).toEqual(jasmine.any(TypeError));
-          expect(e.message).toBe('#<Symbol> is not a function');
+          expect(e.message).toBe('Symbol(mySymbol) is not a function');
         }
         return true;
       }
       var values = [Symbol('mySymbol')],
+        expected = values.map(function () {
+          return true;
+        }),
+        actual = values.map(block);
+      expect(actual).toEqual(expected);
+    });
+
+    ifSymbolSupportIt('Symbol objects should throw a TypeError', function () {
+      function block(value) {
+        try {
+          assertIsCallable(value);
+          return false;
+        } catch (e) {
+          expect(e).toEqual(jasmine.any(TypeError));
+          expect(e.message).toBe('#<Object> is not a function');
+        }
+        return true;
+      }
+      var values = [Object(Symbol('mySymbol'))],
         expected = values.map(function () {
           return true;
         }),
