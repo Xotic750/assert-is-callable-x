@@ -17,6 +17,12 @@
     assertIsCallable;
   if (typeof module === 'object' && module.exports) {
     require('es5-shim');
+    require('es5-shim/es5-sham');
+    if (typeof JSON === 'undefined') {
+      JSON = {};
+    }
+    require('json3').runInContext(null, JSON);
+    require('es6-shim');
     assertIsCallable = require('../../index.js');
   } else {
     assertIsCallable = returnExports;
