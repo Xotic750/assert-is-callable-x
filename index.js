@@ -41,7 +41,7 @@
  * `es6.shim.js` provides compatibility shims so that legacy JavaScript engines
  * behave as closely as possible to ECMAScript 6 (Harmony).
  *
- * @version 1.0.9
+ * @version 1.0.10
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -53,17 +53,18 @@
 /*jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
-  es3:true, esnext:true, plusplus:true, maxparams:3, maxdepth:2,
-  maxstatements:12, maxcomplexity:6 */
+  es3:true, esnext:true, plusplus:true, maxparams:1, maxdepth:1,
+  maxstatements:4, maxcomplexity:3 */
 
 /*global require, module */
 
 ;(function () {
   'use strict';
 
-  var ES = require('es-abstract/es6'),
-    safeToString = require('safe-to-string-x'),
-    isPrimitive = require('is-primitive');
+  var isCallable = require('is-callable');
+  var safeToString = require('safe-to-string-x');
+  var isPrimitive = require('is-primitive');
+
   /**
    * Tests `callback` to see if it is callable, throws a `TypeError` if it is
    * not. Otherwise returns the `callback`.
@@ -80,21 +81,21 @@
    * function fn () {}
    *
    * assertIsCallable(primitive);
-   *    // TypeError 'true is not a function'.
+   *    // TypeError 'true is not callable'.
    * assertIsCallable(object);
-   *    // TypeError '#<Object> is not a function'.
+   *    // TypeError '#<Object> is not callable'.
    * assertIsCallable(mySymbol);
-   *    // TypeError 'Symbol(mySymbol) is not a function'.
+   *    // TypeError 'Symbol(mySymbol) is not callable'.
    * assertIsCallable(symObj);
-   *    // TypeError '#<Object> is not a function'.
+   *    // TypeError '#<Object> is not callable'.
    * assertIsCallable(fn);
    *    // Returns fn.
    */
   module.exports =  function assertIsCallable(callback) {
-    if (!ES.IsCallable(callback)) {
+    if (!isCallable(callback)) {
       throw new TypeError(
         (isPrimitive(callback) ? safeToString(callback) : '#<Object>') +
-        ' is not a function'
+        ' is not callable'
       );
     }
     return callback;
