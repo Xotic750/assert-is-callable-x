@@ -1,6 +1,6 @@
 {
   "name": "assert-is-callable-x",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "If IsCallable(callbackfn) is false, throw a TypeError exception.",
   "homepage": "https://github.com/Xotic750/assert-is-callable-x",
   "author": {
@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "is-callable": "^1.1.2",
-    "safe-to-string-x": "^1.1.8",
+    "safe-to-string-x": "^1.1.9",
     "is-primitive": "^2.0.0"
   },
   "devDependencies": {
-    "es5-shim": "^4.5.0",
+    "es5-shim": "^4.5.2",
     "es6-shim": "^0.34.2",
     "json3": "^3.3.2",
     "jscs": "^2.9.0",
