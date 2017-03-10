@@ -1,21 +1,24 @@
-/*jslint maxlen:80, es6:true, white:true */
+/* jslint maxlen:80, es6:true, white:true */
 
-/*jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
-  freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
-  nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
-  es3:false, esnext:true, plusplus:true, maxparams:1, maxdepth:2,
-  maxstatements:11, maxcomplexity:4 */
+/* jshint bitwise:true, camelcase:true, curly:true, eqeqeq:true, forin:true,
+   freeze:true, futurehostile:true, latedef:true, newcap:true, nocomma:true,
+   nonbsp:true, singleGroups:true, strict:true, undef:true, unused:true,
+   es3:true, esnext:true, plusplus:true, maxparams:1, maxdepth:2,
+   maxstatements:11, maxcomplexity:3 */
 
-/*global JSON:true, expect, module, jasmine, require, describe, xit, it,
+/* eslint strict: 1, max-lines: 1, symbol-description: 1, max-nested-callbacks: 1,
+   max-statements: 1 */
+
+/* global JSON:true, expect, module, jasmine, require, describe, xit, it,
 returnExports */
 
-(function () {
+;(function () { // eslint-disable-line no-extra-semi
+
   'use strict';
 
-  var hasSymbolSupport = typeof Symbol === 'function' &&
-      typeof Symbol() === 'symbol',
-    ifSymbolSupportIt = hasSymbolSupport ? it : xit,
-    assertIsCallable;
+  var hasSymbolSupport = typeof Symbol === 'function' && typeof Symbol() === 'symbol';
+  var ifSymbolSupportIt = hasSymbolSupport ? it : xit;
+  var assertIsCallable;
   if (typeof module === 'object' && module.exports) {
     require('es5-shim');
     require('es5-shim/es5-sham');
@@ -31,7 +34,7 @@ returnExports */
 
   describe('assertIsCallable', function () {
     it('primitives should throw a TypeError', function () {
-      function block(value) {
+      var block = function (value) {
         try {
           assertIsCallable(value);
           return false;
@@ -40,17 +43,17 @@ returnExports */
           expect(e.message).toBe(String(value) + ' is not callable');
         }
         return true;
-      }
-      var values = [undefined, null, 1, true, ''],
-        expected = values.map(function () {
-          return true;
-        }),
-               actual = values.map(block);
+      };
+      var values = [undefined, null, 1, true, ''];
+      var expected = values.map(function () {
+        return true;
+      });
+      var actual = values.map(block);
       expect(actual).toEqual(expected);
     });
 
     it('objects should throw a TypeError', function () {
-      function block(value) {
+      var block = function (value) {
         try {
           assertIsCallable(value);
           return false;
@@ -59,17 +62,17 @@ returnExports */
           expect(e.message).toBe('#<Object> is not callable');
         }
         return true;
-      }
-      var values = [[], {}, /r/, new Date()],
-        expected = values.map(function () {
-          return true;
-        }),
-        actual = values.map(block);
+      };
+      var values = [[], {}, /r/, new Date()];
+      var expected = values.map(function () {
+        return true;
+      });
+      var actual = values.map(block);
       expect(actual).toEqual(expected);
     });
 
     ifSymbolSupportIt('Symbol literals should throw a TypeError', function () {
-      function block(value) {
+      var block = function (value) {
         try {
           assertIsCallable(value);
           return false;
@@ -78,17 +81,17 @@ returnExports */
           expect(e.message).toBe('Symbol(mySymbol) is not callable');
         }
         return true;
-      }
-      var values = [Symbol('mySymbol')],
-        expected = values.map(function () {
-          return true;
-        }),
-        actual = values.map(block);
+      };
+      var values = [Symbol('mySymbol')];
+      var expected = values.map(function () {
+        return true;
+      });
+      var actual = values.map(block);
       expect(actual).toEqual(expected);
     });
 
     ifSymbolSupportIt('Symbol objects should throw a TypeError', function () {
-      function block(value) {
+      var block = function (value) {
         try {
           assertIsCallable(value);
           return false;
@@ -97,27 +100,27 @@ returnExports */
           expect(e.message).toBe('#<Object> is not callable');
         }
         return true;
-      }
-      var values = [Object(Symbol('mySymbol'))],
-        expected = values.map(function () {
-          return true;
-        }),
-        actual = values.map(block);
+      };
+      var values = [Object(Symbol('mySymbol'))];
+      var expected = values.map(function () {
+        return true;
+      });
+      var actual = values.map(block);
       expect(actual).toEqual(expected);
     });
 
     it('should return the function', function () {
-      function block(value) {
+      var block = function (value) {
         try {
           return assertIsCallable(value);
         } catch (ignore) {}
         return false;
-      }
-      var values = [function () {}, Array, block, assertIsCallable],
-        expected = values.map(function (x) {
-          return x;
-        }),
-               actual = values.map(block);
+      };
+      var values = [function () {}, Array, block, assertIsCallable];
+      var expected = values.map(function (x) {
+        return x;
+      });
+      var actual = values.map(block);
       expect(actual).toEqual(expected);
     });
   });
