@@ -25,13 +25,13 @@ alt="npm version" height="18">
 
 If IsCallable(callbackfn) is false, throw a TypeError exception.
 
-**Version**: 1.1.1  
+**Version**: 1.2.0  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
 <a name="exp_module_assert-is-callable-x--module.exports"></a>
 
-### `module.exports(callback)` ⇒ <code>\*</code> ⏏
+### `module.exports(value)` ⇒ <code>\*</code> ⏏
 Tests `callback` to see if it is callable, throws a `TypeError` if it is
 not. Otherwise returns the `callback`.
 
@@ -44,7 +44,7 @@ not. Otherwise returns the `callback`.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| callback | <code>\*</code> | The argument to be tested. |
+| value | <code>\*</code> | The argument to be tested. |
 
 **Example**  
 ```js

@@ -24,7 +24,7 @@
  *
  * If IsCallable(callbackfn) is false, throw a TypeError exception.
  *
- * @version 1.1.1
+ * @version 1.2.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -47,7 +47,7 @@
    * Tests `callback` to see if it is callable, throws a `TypeError` if it is
    * not. Otherwise returns the `callback`.
    *
-   * @param {*} callback The argument to be tested.
+   * @param {*} value The argument to be tested.
    * @throws {TypeError} Throws if `callback` is not a callable.
    * @return {*} Returns `callback` if it is callable.
    * @example
@@ -69,11 +69,11 @@
    * assertIsCallable(fn);
    *    // Returns fn.
    */
-  module.exports = function assertIsCallable(callback) {
-    if (!isCallable(callback)) {
-      var msg = isPrimitive(callback) ? safeToString(callback) : '#<Object>';
+  module.exports = function assertIsCallable(value) {
+    if (!isCallable(value)) {
+      var msg = isPrimitive(value) ? safeToString(value) : '#<Object>';
       throw new TypeError(msg + ' is not callable');
     }
-    return callback;
+    return value;
   };
 }());
