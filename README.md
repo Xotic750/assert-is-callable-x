@@ -1,6 +1,8 @@
 <a name="module_assert-is-callable-x"></a>
 
 ## assert-is-callable-x
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Xotic750/assert-is-callable-x.svg)](https://greenkeeper.io/)
 <a href="https://travis-ci.org/Xotic750/assert-is-callable-x"
 title="Travis status">
 <img
