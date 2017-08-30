@@ -1,6 +1,6 @@
 /**
 * @file If IsCallable(callbackfn) is false, throw a TypeError exception.
-* @version 1.3.0
+* @version 2.0.0
 * @author Xotic750 <Xotic750@gmail.com>
 * @copyright  Xotic750
 * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -40,9 +40,10 @@ var isPrimitive = require('is-primitive');
  *    // Returns fn.
  */
 module.exports = function assertIsCallable(value) {
-  if (!isCallable(value)) {
+  if (isCallable(value) === false) {
     var msg = isPrimitive(value) ? safeToString(value) : '#<Object>';
     throw new TypeError(msg + ' is not callable');
   }
+
   return value;
 };

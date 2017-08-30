@@ -23,7 +23,7 @@
 ## assert-is-callable-x
 If IsCallable(callbackfn) is false, throw a TypeError exception.
 
-**Version**: 1.3.0  
+**Version**: 2.0.0  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
