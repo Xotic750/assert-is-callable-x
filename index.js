@@ -1,6 +1,6 @@
 /**
 * @file If IsCallable(callbackfn) is false, throw a TypeError exception.
-* @version 2.0.1
+* @version 2.1.0
 * @author Xotic750 <Xotic750@gmail.com>
 * @copyright  Xotic750
 * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -10,7 +10,7 @@
 'use strict';
 
 var isCallable = require('is-callable');
-var safeToString = require('safe-to-string-x');
+var safeToString = require('to-string-symbols-supported-x');
 var isPrimitive = require('is-primitive');
 
 /**
