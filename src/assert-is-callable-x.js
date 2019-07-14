@@ -1,17 +1,15 @@
 /**
-* @file If IsCallable(callbackfn) is false, throw a TypeError exception.
-* @version 2.1.0
-* @author Xotic750 <Xotic750@gmail.com>
-* @copyright  Xotic750
-* @license {@link <https://opensource.org/licenses/MIT> MIT}
-* @module assert-is-callable-x
-*/
+ * @file If IsCallable(callbackfn) is false, throw a TypeError exception.
+ * @version 2.1.0
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module assert-is-callable-x
+ */
 
-'use strict';
-
-var isCallable = require('is-callable');
-var safeToString = require('to-string-symbols-supported-x');
-var isPrimitive = require('is-primitive');
+const isCallable = require('is-callable');
+const safeToString = require('to-string-symbols-supported-x');
+const isPrimitive = require('is-primitive');
 
 /**
  * Tests `callback` to see if it is callable, throws a `TypeError` if it is
@@ -41,8 +39,8 @@ var isPrimitive = require('is-primitive');
  */
 module.exports = function assertIsCallable(value) {
   if (isCallable(value) === false) {
-    var msg = isPrimitive(value) ? safeToString(value) : '#<Object>';
-    throw new TypeError(msg + ' is not callable');
+    const msg = isPrimitive(value) ? safeToString(value) : '#<Object>';
+    throw new TypeError(`${msg} is not callable`);
   }
 
   return value;
