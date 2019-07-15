@@ -1,39 +1,19 @@
+import assertIsCallable from '../src/assert-is-callable-x';
+
+/* eslint-disable-next-line compat/compat */
 const hasSymbolSupport = typeof Symbol === 'function' && typeof Symbol('') === 'symbol';
 const ifSymbolSupportIt = hasSymbolSupport ? it : xit;
-let assertIsCallable;
-
-if (typeof module === 'object' && module.exports) {
-  require('es5-shim');
-  require('es5-shim/es5-sham');
-
-  if (typeof JSON === 'undefined') {
-    JSON = {};
-  }
-
-  require('json3').runInContext(null, JSON);
-  require('es6-shim');
-  const es7 = require('es7-shim');
-  Object.keys(es7).forEach(function(key) {
-    const obj = es7[key];
-
-    if (typeof obj.shim === 'function') {
-      obj.shim();
-    }
-  });
-  assertIsCallable = require('../../index.js');
-} else {
-  assertIsCallable = returnExports;
-}
 
 describe('assertIsCallable', function() {
   it('primitives should throw a TypeError', function() {
+    expect.assertions(11);
     const block = function(value) {
       try {
         assertIsCallable(value);
 
         return false;
       } catch (e) {
-        expect(e).toStrictEqual(jasmine.any(TypeError));
+        expect(e).toStrictEqual(expect.any(TypeError));
         expect(e.message).toBe(`${String(value)} is not callable`);
       }
 
@@ -49,13 +29,14 @@ describe('assertIsCallable', function() {
   });
 
   it('objects should throw a TypeError', function() {
+    expect.assertions(9);
     const block = function(value) {
       try {
         assertIsCallable(value);
 
         return false;
       } catch (e) {
-        expect(e).toStrictEqual(jasmine.any(TypeError));
+        expect(e).toStrictEqual(expect.any(TypeError));
         expect(e.message).toBe('#<Object> is not callable');
       }
 
@@ -71,19 +52,21 @@ describe('assertIsCallable', function() {
   });
 
   ifSymbolSupportIt('Symbol literals should throw a TypeError', function() {
+    expect.assertions(3);
     const block = function(value) {
       try {
         assertIsCallable(value);
 
         return false;
       } catch (e) {
-        expect(e).toStrictEqual(jasmine.any(TypeError));
+        expect(e).toStrictEqual(expect.any(TypeError));
         expect(e.message).toBe('Symbol(mySymbol) is not callable');
       }
 
       return true;
     };
 
+    /* eslint-disable-next-line compat/compat */
     const values = [Symbol('mySymbol')];
     const expected = values.map(function() {
       return true;
@@ -93,19 +76,21 @@ describe('assertIsCallable', function() {
   });
 
   ifSymbolSupportIt('Symbol objects should throw a TypeError', function() {
+    expect.assertions(3);
     const block = function(value) {
       try {
         assertIsCallable(value);
 
         return false;
       } catch (e) {
-        expect(e).toStrictEqual(jasmine.any(TypeError));
+        expect(e).toStrictEqual(expect.any(TypeError));
         expect(e.message).toBe('#<Object> is not callable');
       }
 
       return true;
     };
 
+    /* eslint-disable-next-line compat/compat */
     const values = [Object(Symbol('mySymbol'))];
     const expected = values.map(function() {
       return true;
@@ -115,14 +100,18 @@ describe('assertIsCallable', function() {
   });
 
   it('should return the function', function() {
+    expect.assertions(1);
     const block = function(value) {
       try {
         return assertIsCallable(value);
-      } catch (ignore) {}
+      } catch (ignore) {
+        // empty
+      }
 
       return false;
     };
 
+    /* eslint-disable-next-line lodash/prefer-noop */
     const values = [function() {}, Array, block, assertIsCallable];
     const expected = values.map(function(x) {
       return x;
