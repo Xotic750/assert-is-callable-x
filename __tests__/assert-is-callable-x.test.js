@@ -1,6 +1,5 @@
 import assertIsCallable from '../src/assert-is-callable-x';
 
-/* eslint-disable-next-line compat/compat */
 const hasSymbolSupport = typeof Symbol === 'function' && typeof Symbol('') === 'symbol';
 const ifSymbolSupportIt = hasSymbolSupport ? it : xit;
 
@@ -66,7 +65,6 @@ describe('assertIsCallable', function() {
       return true;
     };
 
-    /* eslint-disable-next-line compat/compat */
     const values = [Symbol('mySymbol')];
     const expected = values.map(function() {
       return true;
@@ -90,7 +88,6 @@ describe('assertIsCallable', function() {
       return true;
     };
 
-    /* eslint-disable-next-line compat/compat */
     const values = [Object(Symbol('mySymbol'))];
     const expected = values.map(function() {
       return true;
@@ -111,7 +108,6 @@ describe('assertIsCallable', function() {
       return false;
     };
 
-    /* eslint-disable-next-line lodash/prefer-noop */
     const values = [function() {}, Array, block, assertIsCallable];
     const expected = values.map(function(x) {
       return x;
