@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-2017",
-  "date": "2019-07-16T22:01:18.650Z",
+  "date": "2019-07-17T19:30:27.895Z",
   "describe": "",
   "description": "If IsCallable(callbackfn) is false, throw a TypeError exception.",
   "file": "assert-is-callable-x.js",
-  "hash": "4638703abd6a600255a1",
+  "hash": "e1dccf6172212d7418d8",
   "license": "MIT",
-  "version": "3.0.2"
+  "version": "3.0.3"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -348,7 +348,7 @@ var is_callable_default = /*#__PURE__*/__webpack_require__.n(is_callable);
  * @param {...*} [args] - The arguments to invoke the function with.
  * @returns {object} Returns an object of the result.
  */
-function attempt(fn) {
+var attempt = function attempt(fn) {
   try {
     for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
       args[_key - 1] = arguments[_key];
@@ -366,7 +366,9 @@ function attempt(fn) {
       value: e
     };
   }
-}
+};
+
+/* harmony default export */ var attempt_x_esm = (attempt);
 
 
 // EXTERNAL MODULE: ./node_modules/is-symbol/index.js
@@ -380,7 +382,7 @@ function _newArrowCheck(innerThis, boundThis) { if (innerThis !== boundThis) { t
 
 
 
-var hasSymbolSupport = attempt(function () {
+var hasSymbolSupport = attempt_x_esm(function () {
   _newArrowCheck(this, _this);
 
   /* eslint-disable-next-line compat/compat */
@@ -416,9 +418,11 @@ var castString = ''.constructor;
  * @returns {string} The converted value.
  */
 
-function toStringSymbolsSupported(value) {
+var toStringSymbolsSupported = function toStringSymbolsSupported(value) {
   return isSymbolFn && isSymbolFn(value) ? pToString.call(value) : castString(value);
-}
+};
+
+/* harmony default export */ var to_string_symbols_supported_x_esm = (toStringSymbolsSupported);
 
 
 // EXTERNAL MODULE: ./node_modules/is-primitive/index.js
@@ -426,7 +430,6 @@ var is_primitive = __webpack_require__(2);
 var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
 
 // CONCATENATED MODULE: ./dist/assert-is-callable-x.esm.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return assertIsCallable; });
 
 
 
@@ -439,14 +442,16 @@ var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
  * @returns {*} Returns `callback` if it is callable.
  */
 
-function assertIsCallable(value) {
+var assert_is_callable_x_esm_assertIsCallable = function assertIsCallable(value) {
   if (is_callable_default()(value) === false) {
-    var msg = is_primitive_default()(value) ? toStringSymbolsSupported(value) : '#<Object>';
+    var msg = is_primitive_default()(value) ? to_string_symbols_supported_x_esm(value) : '#<Object>';
     throw new TypeError("".concat(msg, " is not callable"));
   }
 
   return value;
-}
+};
+
+/* harmony default export */ var assert_is_callable_x_esm = __webpack_exports__["default"] = (assert_is_callable_x_esm_assertIsCallable);
 
 
 

@@ -10,13 +10,15 @@ import isPrimitive from 'is-primitive';
  * @returns {*} Returns `callback` if it is callable.
  */
 
-export default function assertIsCallable(value) {
+var assertIsCallable = function assertIsCallable(value) {
   if (isCallable(value) === false) {
     var msg = isPrimitive(value) ? safeToString(value) : '#<Object>';
     throw new TypeError("".concat(msg, " is not callable"));
   }
 
   return value;
-}
+};
+
+export default assertIsCallable;
 
 //# sourceMappingURL=assert-is-callable-x.esm.js.map

@@ -10,11 +10,13 @@ import isPrimitive from 'is-primitive';
  * @throws {TypeError} Throws if `callback` is not a callable.
  * @returns {*} Returns `callback` if it is callable.
  */
-export default function assertIsCallable(value) {
+const assertIsCallable = function assertIsCallable(value) {
   if (isCallable(value) === false) {
     const msg = isPrimitive(value) ? safeToString(value) : '#<Object>';
     throw new TypeError(`${msg} is not callable`);
   }
 
   return value;
-}
+};
+
+export default assertIsCallable;
