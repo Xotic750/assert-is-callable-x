@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-2017",
-  "date": "2019-07-22T13:08:27.951Z",
+  "date": "2019-07-24T00:48:55.805Z",
   "describe": "",
   "description": "If IsCallable(callbackfn) is false, throw a TypeError exception.",
   "file": "assert-is-callable-x.js",
   "hash": "e1dccf6172212d7418d8",
   "license": "MIT",
-  "version": "3.0.8"
+  "version": "3.0.9"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
