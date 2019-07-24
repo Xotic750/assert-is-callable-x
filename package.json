@@ -1,6 +1,6 @@
 {
   "name": "assert-is-callable-x",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "description": "If IsCallable(callbackfn) is false, throw a TypeError exception.",
   "homepage": "https://github.com/Xotic750/assert-is-callable-x",
   "author": {
@@ -21,6 +21,7 @@
   ],
   "module": "dist/assert-is-callable-x.esm.js",
   "main": "dist/assert-is-callable-x.js",
+  "jsdelivr": "dist/assert-is-callable-x.min.js",
   "scripts": {
     "build:esm": "mkdirp dist && babel -s true --env-name esm src/assert-is-callable-x.js -o dist/assert-is-callable-x.esm.js",
     "build:base": "webpack --bail --progress --profile --colors",
@@ -50,7 +51,7 @@
   "dependencies": {
     "is-callable": "^1.1.4",
     "is-primitive": "^3.0.1",
-    "to-string-symbols-supported-x": "^2.0.15"
+    "to-string-symbols-supported-x": "^2.0.17"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -88,7 +89,7 @@
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.13.6",
-    "eslint-plugin-jsdoc": "^15.7.1",
+    "eslint-plugin-jsdoc": "^15.7.2",
     "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-lodash": "^5.1.0",
     "eslint-plugin-no-use-extend-native": "^0.4.1",
