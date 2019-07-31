@@ -1,6 +1,6 @@
 {
   "name": "assert-is-callable-x",
-  "version": "3.0.14",
+  "version": "3.0.15",
   "description": "If IsCallable(callbackfn) is false, throw a TypeError exception.",
   "homepage": "https://github.com/Xotic750/assert-is-callable-x",
   "author": {
@@ -51,7 +51,7 @@
   "dependencies": {
     "is-callable": "^1.1.4",
     "is-primitive": "^3.0.1",
-    "to-string-symbols-supported-x": "^2.0.21"
+    "to-string-symbols-supported-x": "^2.0.22"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -63,7 +63,7 @@
     "@babel/runtime": "^7.5.5",
     "@types/jest": "^24.0.16",
     "@types/node": "^12.6.8",
-    "@xotic750/eslint-config-recommended": "^1.0.4",
+    "@xotic750/eslint-config-recommended": "^1.0.5",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
