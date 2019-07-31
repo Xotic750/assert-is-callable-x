@@ -2,7 +2,7 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-2017",
-  "date": "2019-07-31T16:23:42.175Z",
+  "date": "2019-07-31T17:53:01.855Z",
   "describe": "",
   "description": "If IsCallable(callbackfn) is false, throw a TypeError exception.",
   "file": "assert-is-callable-x.js",
