@@ -2,13 +2,13 @@
 {
   "author": "Graham Fairweather",
   "copywrite": "Copyright (c) 2015-2017",
-  "date": "2019-08-13T15:30:02.922Z",
+  "date": "2019-08-14T15:37:21.806Z",
   "describe": "",
   "description": "If IsCallable(callbackfn) is false, throw a TypeError exception.",
   "file": "assert-is-callable-x.js",
-  "hash": "f3ca17791cfd536a63cd",
+  "hash": "bb0cf5594d3b664f9479",
   "license": "MIT",
-  "version": "3.0.15"
+  "version": "3.1.0"
 }
 */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -467,14 +467,15 @@ var is_primitive_default = /*#__PURE__*/__webpack_require__.n(is_primitive);
  * not. Otherwise returns the `callback`.
  *
  * @param {*} value - The argument to be tested.
+ * @param {string} [message] - An alternative user message.
  * @throws {TypeError} Throws if `callback` is not a callable.
  * @returns {*} Returns `callback` if it is callable.
  */
 
-var assert_is_callable_x_esm_assertIsCallable = function assertIsCallable(value) {
+var assert_is_callable_x_esm_assertIsCallable = function assertIsCallable(value, message) {
   if (is_callable_default()(value) === false) {
-    var msg = is_primitive_default()(value) ? to_string_symbols_supported_x_esm(value) : '#<Object>';
-    throw new TypeError("".concat(msg, " is not callable"));
+    var msg = arguments.length > 1 ? to_string_symbols_supported_x_esm(message) : "".concat(is_primitive_default()(value) ? to_string_symbols_supported_x_esm(value) : '#<Object>', " is not callable");
+    throw new TypeError(msg);
   }
 
   return value;

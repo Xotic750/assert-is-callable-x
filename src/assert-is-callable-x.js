@@ -7,13 +7,16 @@ import isPrimitive from 'is-primitive';
  * not. Otherwise returns the `callback`.
  *
  * @param {*} value - The argument to be tested.
+ * @param {string} [message] - An alternative user message.
  * @throws {TypeError} Throws if `callback` is not a callable.
  * @returns {*} Returns `callback` if it is callable.
  */
-const assertIsCallable = function assertIsCallable(value) {
+const assertIsCallable = function assertIsCallable(value, message) {
   if (isCallable(value) === false) {
-    const msg = isPrimitive(value) ? safeToString(value) : '#<Object>';
-    throw new TypeError(`${msg} is not callable`);
+    const msg =
+      arguments.length > 1 ? safeToString(message) : `${isPrimitive(value) ? safeToString(value) : '#<Object>'} is not callable`;
+
+    throw new TypeError(msg);
   }
 
   return value;
